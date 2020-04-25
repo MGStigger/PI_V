@@ -6,10 +6,10 @@ import time
 import thingspeak
 
 #ID DO CANAL
-channel_id = 1042952
+channel_id = channel_id
 
 #CHAVE PARA GRAVAR DADOS NO CANAL
-write_key = 'HHIO70MX4XESGDBJ'
+write_key = 'write_key'
 
 #INICIALIZA A VARIAVEL "temperatura" COM O VALOR ZERO
 temperatura = 0

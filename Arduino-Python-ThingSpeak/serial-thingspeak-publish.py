@@ -16,10 +16,10 @@ host_name = "mqtt.thingspeak.com"
 numero_campo = 1
 
 # ID do Canal
-channel_id = 1042952
+channel_id = channel_id
 
 # Chave para gravar dados no canal
-write_key = 'HHIO70MX4XESGDBJ'
+write_key = 'write_key'
 
 # Topico
 topico = "channels/"+str(channel_id)+"/publish/fields/field"+(numero_campo)+"/"+write_key
