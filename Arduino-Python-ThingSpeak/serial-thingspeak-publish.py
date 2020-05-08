@@ -1,46 +1,48 @@
 # Channel: https://thingspeak.com/channels/1042952 .
 
-# Importa o publish da biblioteca paho.mqtt
+# IMPORTA O PUBLISH DA BIBLIOTECA "paho.mqtt"
 import paho.mqtt.publish as publish
 
-#Importa a biblioteca serial
+#IMPORTA A BIBLIOTECA SERIAL
 import serial
 
-# Importa a biblioteca time
+# IMPORTA A BIBLIOTECA TIME
 import time
 
-# Variavel "host_name" recebe o broker do ThingSpeak
+# VARIAVEL "host_name" RECEBE O BROKER DO THINGSPEAK
 host_name = "mqtt.thingspeak.com"
 
-# Numero do campo (field) que se deseja enviar o valor da temperatura
+# NUMERO DO CAMPO (field) QUE SE DESEJA ENVIAR O VALOR DA TEMPERATURA
 numero_campo = 1
 
-# ID do Canal
+# ID DO CANAL
 channel_id = channel_id
 
-# Chave para gravar dados no canal
+# CHAVE PARA GRAVAR OS DADOS NO CANAL
 write_key = 'write_key'
 
-# Topico
+# TOPICO
 topico = "channels/"+str(channel_id)+"/publish/fields/field"+(numero_campo)+"/"+write_key
 
-# Variavel temperatura
+# INICIALIZA A VARIAVEL "temperatura" COM O VALOR ZERO
 temperatura = 0
 
-# Variavel "ser" recebe a porta serial
+# VARIAVEL "ser" RECEBE A PORTA SERIAL
 ser = serial.Serial('/dev/ttyACM0')
 
-# Taxa de transmissao
+# TAXA DE TRANSMISSAO
 ser.baudrate = 9600
 
 #ser.port = '/dev/ttyACM0'
 
-# Abre a porta serial
+# ABRE A PORTA SERIAL
 ser.open()
 
 while 'true':
-	# Le uma linha terminada com "\n"
+	# LE UMA LINHA TERMINADA COM "\n"
 	temperatura = ser.readline()
+
     	#print(temperatura)
-	# Envia uma mensagem do cliente para o broker
+
+	# ENVIA A MENSAGEM DO CLIENTE PARA O BROKER
 	publish.single(topico, temperatura, hostname=host_name)
